@@ -1,0 +1,18 @@
+{% extends "mobile/base.html" %}
+{% block title %}mobile App{% endblock %}
+{% block content %}
+ <h1>MY MOBILE SAMPLE APPLICATION</h1>
+ {% for mobile in mobiles %}
+ <h2>
+ <a href="{{ mobile.get_absolute_url }}">
+ {{ mobile.name }}
+ </a>
+ </h2>
+ <p class="date">
+ Published {{ mobile.publish }} by {{ mobile.dataEntryBy }}
+ </p>
+ {{ mobile.type }}, {{ mobile.catg }}
+ {{ mobile.desc|truncatewords:30|linebreaks }}
+ {% endfor %}
+ {% include "pagination.html" with page=page_obj %}
+{% endblock %}
